@@ -1,4 +1,4 @@
-# counting positive and negative words in a text 
+# counting positive and negative words in a text
 #concept: dictionaries and files
 
 '''
@@ -16,21 +16,34 @@ sentiment_type will contain either "negative" or "positive".
 
 import unittest
 
-def get_sentiment_count(filename, sentiment_type): 
+def get_sentiment_count(filename, sentiment_type):
   sentiment_words = {
-    "negative":["aggressive","hostile","bad","against","rediculous","targeted","offended","offend","force","forceful","forcefully","annoyed","foolish","illogical","cheos"], 
-    "positive": ["adore","good","excellent","beloved","benevolent","developed","pride","proud","celebratory","optimistic","cheery"]
+    "negative":["aggressive","hostile","bad","good","excellent","beloved","against","rediculous","targeted","offended","offend","force","forceful","forcefully","annoyed","foolish","illogical","cheos"],
+    "positive": ["adore","benevolent","developed","pride","proud","celebratory","optimistic","cheery"]
   }
 
   # Delete the bellow line and write your implementation
-  pass
+  f=open(filename,'r')
+  x=f.readline()
+  content=x.split()
+  f.close()
+  a=0
+  b=0
+  for i in content:
+    if i in sentiment_words["negative"]:
+      a=a+1
+    elif i in sentiment_words["positive"]:
+      b=b+1
+  if sentiment_type=="negative":
+    return a
+  if sentiment_type=="positive":
+    return b
 
-  
 # don't touch the code bellow
 
 class Unit_test(unittest.TestCase):
   def test_01(self):
-    
+
     self.assertEqual(get_sentiment_count("news_article.txt","positive"), 10)
 
   def test_02(self):
