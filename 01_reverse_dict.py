@@ -26,24 +26,30 @@ def reverse(original):
   """
   reversed_dict = {}
   # Write your code here
-  
+  for i,j in original.items():
+    l=[]
+    for m,n in original.items():
+      if j==n:
+        l.append(m)
+    reversed_dict.update({j:l})
+
   return reversed_dict
 
 
-  
+
 # don't touch the code bellow
 
 class Unit_test(unittest.TestCase):
   def test_01(self):
     input = {"Ram": 12, "Laxman": 50, "Lakshmi": 70, "Vishesh": 8}
     output = {12 : ["Ram"], 50 : ["Laxman"], 70 : ["Lakshmi"], 8 : ["Vishesh"]}
-    
+
     self.assertEqual(reverse(input), output)
 
   def test_02(self):
     input = {"Ram": 12, "Laxman": 12, "Lakshmi": 12, "Vishesh": 8}
     output = {12 : ["Ram", "Laxman", "Lakshmi"], 8 : ["Vishesh"]}
-    
+
     self.assertEqual(reverse(input), output)
 
 
